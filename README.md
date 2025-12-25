@@ -1,90 +1,96 @@
-**BeyondChats Assessment**
+# BeyondChats Assessment
 
-This repository contains the complete BeyondChats project, covering all three phases: Article Management (Laravel API), Automated Article Updates (NodeJS + LLM), and a ReactJS frontend to display original and updated articles.
+This repository contains the complete BeyondChats project, covering all three phases:
 
-**Phases**
+1. **Article Management (Laravel API)**
+2. **Automated Article Updates (NodeJS + LLM)**
+3. **ReactJS Frontend to display original and updated articles**
 
-**1\. Phase 1 - Laravel Backend API**
+---
 
-\- Provides REST API endpoints for articles:
+## Phases
 
-\- \`GET /api/articles\` → Fetch all articles
+### Phase 1 - Laravel Backend API
 
-\- \`POST /api/articles\` → Add new article
+- Provides REST API endpoints for articles:
 
-\- \`PUT /api/articles/:id\` → Update article
+```http
+GET /api/articles       # Fetch all articles
+POST /api/articles      # Add new article
+PUT /api/articles/:id   # Update article
+```
 
-\- Stores articles with fields: \`id\`, \`title\`, \`content\`, \`source_url\`, \`references\`, \`created_at\`, \`updated_at\`.
+- Stores articles with fields: id, title, content, source_url, references, created_at, updated_at.
 
-\- Handles storing both original and AI-updated articles.
+- Handles storing both original and AI-updated articles.
 
-**2\. Phase 2 - NodeJS Automation**
+###  Phase 2 - NodeJS Automation
 
-\- NodeJS scripts to fetch the latest article and enhance it using AI.
+- NodeJS scripts to fetch the latest article and enhance it using AI.
 
-\- Workflow:
+- Workflow:
 
-1\. Fetch latest article from Laravel API.
+1. Fetch latest article from Laravel API.
 
-2\. Search Google for related reference articles.
+2. Search Google for related reference articles.
 
-3\. Scrape reference articles for content.
+3. Scrape reference articles for content.
 
-4\. Rewrite original article using Groq LLM.
+4. Rewrite original article using Groq LLM.
 
-5\. Append references at the bottom of the article.
+5. Append references at the bottom of the article.
 
-6\. Publish rewritten article back to Laravel API (creates new entry with \`(Updated)\` in the title).
+6. Publish rewritten article back to Laravel API (creates new entry with \`(Updated)\` in the title).
 
-\- Main scripts:
+#### Main scripts:
 
-\- \`fetchLatestArticle.js\`
+- fetchLatestArticle.js
 
-\- \`googleSearch.js\`
+- googleSearch.js
 
-\- \`scrapeArticle.js\`
+- scrapeArticle.js
 
-\- \`rewriteWithLLM.js\`
+- rewriteWithLLM.js
 
-\- \`publishArticle.js\`
+- publishArticle.js
 
-**3\. Phase 3 - ReactJS Frontend**
+### Phase 3 - ReactJS Frontend
 
-\- Built with ReactJS + Vite + TailwindCSS.
+- Built with ReactJS + Vite + TailwindCSS.
 
-\- Features:
+####  Features:
 
-\- Fetch original and updated articles from Laravel API.
+- Fetch original and updated articles from Laravel API.
 
-\- Display articles in responsive cards.
+- Display articles in responsive cards.
 
-\- Modal to view full article content, supporting Markdown formatting.
+- Modal to view full article content, supporting Markdown formatting.
 
-\- Updated articles marked with an "Updated" badge.
+- Updated articles marked with an "Updated" badge.
 
 **🏗 Architecture / Data Flow**
 ```
-\[Original Articles - Laravel DB\]  
+[Original Articles - Laravel DB]  
 ↓  
 (Phase 2 Node Scripts)  
 ↓  
-\[Updated Articles - Laravel DB\]  
+[Updated Articles - Laravel DB]  
 ↓  
-\[Frontend React App\]
+[Frontend React App]
 ```
-\- Node scripts act as a middleware between the backend and AI services to rewrite articles.
+- Node scripts act as a middleware between the backend and AI services to rewrite articles.
 
-\- Frontend fetches both original and updated articles dynamically from Laravel API.
+- Frontend fetches both original and updated articles dynamically from Laravel API.
 
-**⚙️ Local Setup Instructions**
+### ⚙️ Local Setup Instructions
 
-### **Prerequisites**
-```
+#### **Prerequisites**
+
 - PHP >= 8.x, Composer
 - MySQL or MariaDB
 - Node.js >= 18, npm/yarn
 - XAMPP or any local Apache + MySQL setup
-```
+
 ⚠️ Make sure Apache and MySQL services are running from XAMPP before starting Laravel.
 
 **Phase 1: Backend (Laravel)**
