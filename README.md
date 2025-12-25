@@ -5,7 +5,7 @@ This repository contains the complete BeyondChats project, covering all three ph
 **Phases**
 
 **1\. Phase 1 - Laravel Backend API**
-```
+
 \- Provides REST API endpoints for articles:
 
 \- \`GET /api/articles\` → Fetch all articles
@@ -17,13 +17,13 @@ This repository contains the complete BeyondChats project, covering all three ph
 \- Stores articles with fields: \`id\`, \`title\`, \`content\`, \`source_url\`, \`references\`, \`created_at\`, \`updated_at\`.
 
 \- Handles storing both original and AI-updated articles.
-```
+
 **2\. Phase 2 - NodeJS Automation**
 
 \- NodeJS scripts to fetch the latest article and enhance it using AI.
 
 \- Workflow:
-```
+
 1\. Fetch latest article from Laravel API.
 
 2\. Search Google for related reference articles.
@@ -35,9 +35,9 @@ This repository contains the complete BeyondChats project, covering all three ph
 5\. Append references at the bottom of the article.
 
 6\. Publish rewritten article back to Laravel API (creates new entry with \`(Updated)\` in the title).
-```
+
 \- Main scripts:
-```
+
 \- \`fetchLatestArticle.js\`
 
 \- \`googleSearch.js\`
@@ -47,7 +47,7 @@ This repository contains the complete BeyondChats project, covering all three ph
 \- \`rewriteWithLLM.js\`
 
 \- \`publishArticle.js\`
-```
+
 **3\. Phase 3 - ReactJS Frontend**
 
 \- Built with ReactJS + Vite + TailwindCSS.
